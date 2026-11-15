@@ -139,6 +139,14 @@ def test_redundancy_variants(egi: int, channels: int) -> None:
     assert system.members("power") == ["power_bus_1", "power_bus_2"]
 
 
+def test_second_mission_computer() -> None:
+    system = navigation_system(mission_computers=2)
+    assert system.members("mission_computer") == ["mission_computer_1", "mission_computer_2"]
+    assert "2 mission computers" in system.name
+    # The computer was 99 % of system failures; duplicating it removes most of them.
+    assert steady_state(system).mtbf > 10 * steady_state(navigation_system()).mtbf
+
+
 def test_more_redundancy_never_lowers_availability() -> None:
     base = system_availability(navigation_system(2, 2))
     assert system_availability(navigation_system(3, 2)) >= base
@@ -198,6 +206,8 @@ def test_validation_errors() -> None:
         System("s", "f", (a, unit("b")), "a")
     with pytest.raises(ValueError):
         navigation_system(0, 2)
+    with pytest.raises(ValueError):
+        navigation_system(mission_computers=0)
     with pytest.raises(ValueError):
         mission_reliability(navigation_system(), -1.0)
     with pytest.raises(ValueError):

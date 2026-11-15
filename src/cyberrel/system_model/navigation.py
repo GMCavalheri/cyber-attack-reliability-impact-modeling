@@ -93,10 +93,17 @@ def navigation_system(
     egi_units: int = 2,
     bus_channels: int = 2,
     parameters: Path | None = None,
+    mission_computers: int = 1,
 ) -> System:
-    """Build the navigation system with the given redundancy (default: CPS-02's 2 and 2)."""
+    """Build the navigation system with the given redundancy (default: CPS-02's 2, 2 and 1).
+
+    With ``mission_computers > 1`` the computers (``mission_computer_1``, ...) work in
+    parallel, each fed from both power buses, and copy the single computer's parameters.
+    """
     if not 1 <= egi_units <= 8 or not 1 <= bus_channels <= len(CHANNEL_LETTERS):
         raise ValueError("egi_units and bus_channels must be between 1 and 8")
+    if not 1 <= mission_computers <= 4:
+        raise ValueError("mission_computers must be between 1 and 4")
     rows = load_parameters(parameters)
     egis = [rows["egi_1"].to_component(f"egi_{i}") for i in range(1, egi_units + 1)]
     if egi_units >= 2:
@@ -112,18 +119,26 @@ def navigation_system(
         for c in channels
     ]
     power = [rows["power_bus_1"].to_component(), rows["power_bus_2"].to_component()]
-    computer = rows["mission_computer"].to_component()
+    if mission_computers == 1:
+        computers = [rows["mission_computer"].to_component()]
+    else:
+        computers = [
+            rows["mission_computer"].to_component(f"mission_computer_{k}")
+            for k in range(1, mission_computers + 1)
+        ]
 
     sources: list[Block] = [Series(e.name, f"power_bus_{1 + (i % 2)}") for i, e in enumerate(egis)]
     structure = Series(
         Parallel(*sources),
         Parallel(*(c.name for c in channels)),
-        computer.name,
+        Parallel(*(c.name for c in computers)),
         Parallel(*(p.name for p in power)),
     )
+    name = f"navigation ({egi_units} EGI, {bus_channels} bus channels"
+    name += f", {mission_computers} mission computers)" if mission_computers > 1 else ")"
     return System(
-        name=f"navigation ({egi_units} EGI, {bus_channels} bus channels)",
+        name=name,
         function=FUNCTION,
-        components=(*egis, *power, *channels, computer),
+        components=(*egis, *power, *channels, *computers),
         structure=structure,
     )
