@@ -1,6 +1,6 @@
 [project]
 name = "cyberrel"
-version = "0.1.0"
+version = "1.0.0"
 description = "Cyber attacks measured in the units of reliability engineering: MTBF, availability and mission-capable rate of a synthetic cyber-physical system under physical failures and effect-level attack scenarios."
 readme = "README.md"
 license = { text = "MIT" }

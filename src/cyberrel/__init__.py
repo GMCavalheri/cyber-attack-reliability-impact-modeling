@@ -6,4 +6,4 @@ attack scenarios, and reports the result as MTBF, availability and mission-capab
 metrics reliability engineers already use, in the spirit of Cyber-Informed Engineering (CIE).
 """
 
-__version__ = "0.1.0"
+__version__ = "1.0.0"
