@@ -33,3 +33,11 @@ def test_inline_math_survives_github(path):
         if re.search(pattern, span)
     ]
     assert not problems, "\n".join(problems)
+
+
+@pytest.mark.parametrize("path", DOCS, ids=lambda p: str(p.relative_to(ROOT)))
+def test_inline_math_opens_and_closes_on_one_line(path):
+    # An inline $...$ broken across a line wrap is not recognised as math on GitHub.
+    text = CODE.sub("", FENCE.sub("", path.read_text())).replace("$$", "")
+    split = [line for line in text.splitlines() if len(re.findall(r"(?<!\\)\$", line)) % 2]
+    assert not split, "\n".join(split)
