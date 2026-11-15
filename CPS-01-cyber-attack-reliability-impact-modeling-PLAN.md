@@ -48,7 +48,7 @@ cyber-attack-reliability-impact-modeling/
 ```
 
 ## Execution Plan
-- [ ] **Phase 1 — System model and physical baseline**: define the synthetic cyber-physical system and its physical reliability baseline (reusing prior modules).
+- [x] **Phase 1 — System model and physical baseline**: define the synthetic cyber-physical system and its physical reliability baseline (reusing prior modules).
 - [ ] **Phase 2 — Attack scenario library**: define representative attack scenarios at the effect level (duration of denial, magnitude of data corruption, delay introduced).
 - [ ] **Phase 3 — Attack-to-metric translation**: implement the simulation layer converting attack effects into MTBF/availability/mission-capable-rate impact.
 - [ ] **Phase 4 — Combined simulation**: run Monte Carlo simulation combining physical and cyber events, produce combined risk metrics.
