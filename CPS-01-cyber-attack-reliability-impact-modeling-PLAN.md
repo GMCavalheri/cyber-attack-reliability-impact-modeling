@@ -52,7 +52,7 @@ cyber-attack-reliability-impact-modeling/
 - [x] **Phase 2 — Attack scenario library**: define representative attack scenarios at the effect level (duration of denial, magnitude of data corruption, delay introduced).
 - [x] **Phase 3 — Attack-to-metric translation**: implement the simulation layer converting attack effects into MTBF/availability/mission-capable-rate impact.
 - [x] **Phase 4 — Combined simulation**: run Monte Carlo simulation combining physical and cyber events, produce combined risk metrics.
-- [ ] **Phase 5 — Sensitivity analysis**: analyze redundancy and detection-time sensitivity.
+- [x] **Phase 5 — Sensitivity analysis**: analyze redundancy and detection-time sensitivity.
 - [ ] **Phase 6 — Documentation and publishing**: written explanation connecting the methodology explicitly to the Cyber-Informed Engineering framework, with clear sourcing.
 
 ## Validation Strategy
