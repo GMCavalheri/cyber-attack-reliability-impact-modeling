@@ -72,7 +72,7 @@ def status_bars(
         left = [a + b for a, b in zip(left, widths, strict=True)]
     ax.invert_yaxis()
     ax.set_xlabel("share of possessed hours (%)")
-    ax.legend(loc="lower right", fontsize=8)
+    ax.legend(loc="upper left", bbox_to_anchor=(1.01, 1.0), fontsize=8, frameon=False)
     if title:
         ax.set_title(title)
     return fig
