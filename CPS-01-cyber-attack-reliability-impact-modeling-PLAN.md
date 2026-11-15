@@ -53,7 +53,7 @@ cyber-attack-reliability-impact-modeling/
 - [x] **Phase 3 — Attack-to-metric translation**: implement the simulation layer converting attack effects into MTBF/availability/mission-capable-rate impact.
 - [x] **Phase 4 — Combined simulation**: run Monte Carlo simulation combining physical and cyber events, produce combined risk metrics.
 - [x] **Phase 5 — Sensitivity analysis**: analyze redundancy and detection-time sensitivity.
-- [ ] **Phase 6 — Documentation and publishing**: written explanation connecting the methodology explicitly to the Cyber-Informed Engineering framework, with clear sourcing.
+- [x] **Phase 6 — Documentation and publishing**: written explanation connecting the methodology explicitly to the Cyber-Informed Engineering framework, with clear sourcing.
 
 ## Validation Strategy
 - Physical-only baseline validated for consistency against the original Fleet Reliability Dashboard/Mission Capable Rate Analysis methodology (should reduce to the same results with zero cyber attack scenarios).
