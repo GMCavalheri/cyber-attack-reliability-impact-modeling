@@ -34,7 +34,7 @@ from dataclasses import dataclass
 import numpy as np
 from numpy.typing import NDArray
 
-from cyberrel.system_model.structure import BoolArray
+BoolArray = NDArray[np.bool_]
 
 
 @dataclass(frozen=True)
