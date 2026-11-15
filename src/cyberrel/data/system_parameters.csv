@@ -1,0 +1,8 @@
+name,group,description,failure_rate_per_hour,mttr_hours,repair_kind,repair_sigma,basis
+egi_1,nav_source,Embedded GNSS/INS navigation unit 1,2.0e-4,3.0,lognormal,0.8,failure rate from CPS-02 case_study_parameters.csv (assumption: MTBF 5000 h); repair assumption: unit replacement and alignment
+egi_2,nav_source,Embedded GNSS/INS navigation unit 2,2.0e-4,3.0,lognormal,0.8,failure rate from CPS-02 case_study_parameters.csv (assumption: MTBF 5000 h); repair assumption: unit replacement and alignment
+power_bus_1,power,Electrical power bus 1 (feeds unit 1 and the mission computer),2.0e-5,6.0,lognormal,0.8,failure rate from CPS-02 case_study_parameters.csv (assumption: MTBF 50000 h); repair assumption: fault isolation on the electrical system
+power_bus_2,power,Electrical power bus 2 (feeds unit 2 and the mission computer),2.0e-5,6.0,lognormal,0.8,failure rate from CPS-02 case_study_parameters.csv (assumption: MTBF 50000 h); repair assumption: fault isolation on the electrical system
+bus_ch_a,data_bus,Data bus channel A (cable and transceivers),1.0e-5,8.0,lognormal,0.8,failure rate from CPS-02 case_study_parameters.csv (assumption: MTBF 100000 h); repair assumption: wiring troubleshooting
+bus_ch_b,data_bus,Data bus channel B (cable and transceivers),1.0e-5,8.0,lognormal,0.8,failure rate from CPS-02 case_study_parameters.csv (assumption: MTBF 100000 h); repair assumption: wiring troubleshooting
+mission_computer,mission_computer,Mission computer that consumes the navigation solution,5.0e-5,4.0,lognormal,0.8,failure rate from CPS-02 case_study_parameters.csv (assumption: MTBF 20000 h); repair assumption: unit replacement and software load
